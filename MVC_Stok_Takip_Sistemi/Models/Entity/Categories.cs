@@ -12,17 +12,17 @@ namespace MVC_Stok_Takip_Sistemi.Models.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class Category
+    public partial class Categories
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Category()
+        public Categories()
         {
             this.Brands = new HashSet<Brand>();
             this.Products = new HashSet<Product>();
         }
     
         public int ID { get; set; }
-        public string Category1 { get; set; }
+        public string CategoryName { get; set; }
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,0 +1,36 @@
+﻿@using MVC_Stok_Takip_Sistemi.Models.Entity
+@model List<MVC_Stok_Takip_Sistemi.Models.Entity.Categories>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Category Home Page</h2>
+
+<table>
+    <thead>
+        <tr>
+            <td>
+                ID
+            </td>
+            <td>
+                Category
+            </td>
+            <td>
+                Description
+            </td>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.CategoryName</td>
+                <td>@item.Description</td>
+            </tr>
+
+        }
+    </tbody>
+</table>

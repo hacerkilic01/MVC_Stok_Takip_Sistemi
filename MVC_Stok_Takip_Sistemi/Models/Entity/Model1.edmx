@@ -179,7 +179,7 @@ warning 6013: The table/view 'MVC_Stok_Takibi.dbo.Products' does not have a prim
           <NavigationProperty Name="Category" Relationship="Self.FK_Brands_Categories" FromRole="Brands" ToRole="Categories" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Product_Brands" FromRole="Brands" ToRole="Product" />
         </EntityType>
-        <EntityType Name="Category">
+        <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -244,7 +244,7 @@ warning 6013: The table/view 'MVC_Stok_Takibi.dbo.Products' does not have a prim
           <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_Units" FromRole="Units" ToRole="Sales" />
         </EntityType>
         <Association Name="FK_Brands_Categories">
-          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Categories" Type="MVC_Stok_TakibiModel.Categories" Multiplicity="1" />
           <End Role="Brands" Type="Self.Brand" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Categories">
@@ -268,7 +268,7 @@ warning 6013: The table/view 'MVC_Stok_Takibi.dbo.Products' does not have a prim
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_Categories">
-          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Categories" Type="MVC_Stok_TakibiModel.Categories" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Categories">
@@ -305,13 +305,13 @@ warning 6013: The table/view 'MVC_Stok_Takibi.dbo.Products' does not have a prim
         </Association>
         <EntityContainer Name="MVC_Stok_TakibiEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Brands" EntityType="Self.Brand" />
-          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Categories1" EntityType="MVC_Stok_TakibiModel.Categories" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="Sales" EntityType="Self.Sale" />
           <EntitySet Name="Units" EntityType="Self.Unit" />
           <AssociationSet Name="FK_Brands_Categories" Association="Self.FK_Brands_Categories">
-            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Categories" EntitySet="Categories1" />
             <End Role="Brands" EntitySet="Brands" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_Brands" Association="Self.FK_Product_Brands">
@@ -319,7 +319,7 @@ warning 6013: The table/view 'MVC_Stok_Takibi.dbo.Products' does not have a prim
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_Categories" Association="Self.FK_Product_Categories">
-            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Categories" EntitySet="Categories1" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Sales_Product" Association="Self.FK_Sales_Product">
@@ -347,8 +347,8 @@ warning 6013: The table/view 'MVC_Stok_Takibi.dbo.Products' does not have a prim
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="MVC_Stok_TakibiModel.Category">
+          <EntitySetMapping Name="Categories1">
+            <EntityTypeMapping TypeName="MVC_Stok_TakibiModel.Categories">
               <MappingFragment StoreEntitySet="Categories">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Category1" ColumnName="Category" />

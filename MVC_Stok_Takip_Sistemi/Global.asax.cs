@@ -15,7 +15,7 @@ namespace MVC_Stok_Takip_Sistemi
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+          //  BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }
