@@ -12,10 +12,10 @@ namespace MVC_Stok_Takip_Sistemi.Models.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class Categories
+    public partial class Category
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Categories()
+        public Category()
         {
             this.Brands = new HashSet<Brand>();
             this.Products = new HashSet<Product>();

@@ -9,10 +9,11 @@ namespace MVC_Stok_Takip_Sistemi.Controllers
 {
     public class CategoriesController : Controller
     {
-        
+        MVC_Stok_TakibiEntities1 db = new MVC_Stok_TakibiEntities1 ();
+             
         public ActionResult Index()
         {
-            return View();
+            return View(db.Categories.ToList());
         }
     }
 }

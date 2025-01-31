@@ -25,7 +25,7 @@ namespace MVC_Stok_Takip_Sistemi.Models.Entity
         public string Brand1 { get; set; }
         public string Description { get; set; }
     
-        public virtual Categories Category { get; set; }
+        public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
     }
