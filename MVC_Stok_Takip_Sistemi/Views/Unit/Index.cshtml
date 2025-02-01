@@ -1,5 +1,5 @@
 ﻿@using MVC_Stok_Takip_Sistemi.Models.Entity
-@model List<MVC_Stok_Takip_Sistemi.Models.Entity.Category>
+@model List<MVC_Stok_Takip_Sistemi.Models.Entity.Unit>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,7 +8,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <h2 class="text-start">Category Home Page</h2>
+            <h2 class="text-start">Unit Page</h2>
         </div>
     </div>
 
@@ -16,7 +16,7 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Category</th>
+                <th>Unit</th>
                 <th>Description</th>
                 <th>Delete</th>
                 <th>Update</th>
@@ -28,17 +28,17 @@
             {
                 <tr>
                     <td>@item.ID</td>
-                    <td>@item.</td>
+                    <td>@item.Unit1</td>
                     <td>@item.Description</td>
-                    <th><a href="/Category/ComeDelete/item.ID" class="btn btn-danger">Delete</a></th>
-                    <th><a href="/Category/ComeUpdate/item.ID" class="btn btn-warning">Update</a></th>
+                    <th><a href="/Unit/ComeDelete/@item.ID" class="btn btn-danger">Delete</a></th>
+                    <th><a href="/Unit/ComeUpdate/@item.ID" class="btn btn-warning">Update</a></th>
                 </tr>
             }
         </tbody>
     </table>
 </div>
 <div class="text-start">
-    <a href="/Categories/AddNewCategory" class="btn btn-success" style="margin-top:15px;">
-        Add New Category
+    <a href="/Unit/Add/" class="btn btn-success" style="margin-top:15px;">
+        Add New Unit
     </a>
 </div>

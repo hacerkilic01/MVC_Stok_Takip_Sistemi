@@ -7,21 +7,22 @@ using MVC_Stok_Takip_Sistemi.Models.Entity;
 
 namespace MVC_Stok_Takip_Sistemi.Controllers
 {
-    public class CategoriesController : Controller
+    public class UnitController : Controller
     {
-        MVC_Stok_TakibiEntities1 db = new MVC_Stok_TakibiEntities1 ();
-             
+        MVC_Stok_TakibiEntities1 db = new MVC_Stok_TakibiEntities1();
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            return View(db.Units.ToList());
         }
+        [HttpGet]
         public ActionResult Add()
         {
             return View();
         }
-        public ActionResult Add2(Category p)
+        [HttpPost]
+        public ActionResult Add(Unit p)
         {
-            db.Categories.Add(p);
+            db.Units.Add(p);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

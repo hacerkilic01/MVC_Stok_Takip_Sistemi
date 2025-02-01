@@ -7,24 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+
 namespace MVC_Stok_Takip_Sistemi.Models.Entity
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class Unit
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Unit()
-        {
-            this.Sales = new HashSet<Sale>();
-        }
-    
         public int ID { get; set; }
+
+        [Display(Name = "Unit")] // Label'ý deðiþtirme için ekledik
         public string Unit1 { get; set; }
+
         public string Description { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
         public virtual ICollection<Sale> Sales { get; set; }
     }
 }
+

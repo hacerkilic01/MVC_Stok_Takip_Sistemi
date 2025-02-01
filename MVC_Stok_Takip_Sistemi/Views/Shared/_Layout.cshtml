@@ -7,13 +7,14 @@
     <meta charset="utf-8">
 
 
-    <title>ASP.NET MVC Stok Takip Otomasyonu</title>
+    <title>
+        STOCK TRACKING SYSTEM
+    </title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/styledanger.css" rel="stylesheet" />
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/styledanger.css" rel="stylesheet" />
+
 
 </head>
 
@@ -22,30 +23,31 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container d-flex justify-content-between">
-            <a class="navbar-brand" href="#">Stok Takip Otomasyonu</a>
+            <a class="navbar-brand" href="#">
+                STOCK TRACKING SYSTEM
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item px-lg-3">
-                        <a class="nav-link" href="/Urunler/Index">Ürünler</a>
+                        <a class="nav-link" href="/Urunler/Index">Products</a>
                     </li>
                     <li class="nav-item px-lg-3">
                         <a class="nav-link" href="/Categories/Index/">Categories</a>
                     </li>
                     <li class="nav-item px-lg-3">
-                        <a class="nav-link" href="/Markalar/Index/">Markalar</a>
+                        <a class="nav-link" href="/Brands/Index/">Brands</a>
+                    </li>
+
+                    <li class="nav-item px-lg-3">
+                        <a class="nav-link" href="/Units/Index/">Units</a>
                     </li>
                     <li class="nav-item px-lg-3">
-                        <a class="nav-link" href="/Birimler/Index/">Birimler</a>
+                        <a class="nav-link" href="/Kullanicilar/Logout/">Exit</a>
                     </li>
-                    <li class="nav-item px-lg-3">
-                        <a class="nav-link" href="/Kullanicilar/Logout/">Çıkış</a>
-                    </li>
-                    <li class="nav-item px-lg-3">
-                        <a class="nav-link" style="color:ActiveBorder">@User.Identity.Name</a>
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -60,7 +62,9 @@
     <footer class="footer text-faded text-center py-xl-5 navbar-fixed-bottom">
         <div class="container">
             <div></div>
-            <p class="m-0 table-sm">Copyright &copy; Stok Takip Otomasyonu Web Sitesi</p>
+            <p class="m-0 table-sm">
+                Copyright &copy; STOCK TRACKING SYSTEM
+            </p>
         </div>
     </footer>
 
