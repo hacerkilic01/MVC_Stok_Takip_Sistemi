@@ -28,10 +28,10 @@
             {
                 <tr>
                     <td>@item.ID</td>
-                    <td>@item.</td>
+                    <td>@item.CategoryName</td>
                     <td>@item.Description</td>
-                    <th><a href="/Category/ComeDelete/item.ID" class="btn btn-danger">Delete</a></th>
-                    <th><a href="/Category/ComeUpdate/item.ID" class="btn btn-warning">Update</a></th>
+                    <th><a href="/Categories/ComeDelete/@item.ID" class="btn btn-danger">Delete</a></th>
+                    <th><a href="/Categories/UpdateInformation/@item.ID" class="btn btn-warning">Update</a></th>
                 </tr>
             }
         </tbody>

@@ -222,7 +222,8 @@
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Unit\Index.cshtml" />
     <Content Include="Views\Categories\Add.cshtml" />
-    <Content Include="Views\Unit\Add.cshtml" />
+    <Content Include="Views\Unit\Save.cshtml" />
+    <Content Include="Views\Categories\UpdateInformation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

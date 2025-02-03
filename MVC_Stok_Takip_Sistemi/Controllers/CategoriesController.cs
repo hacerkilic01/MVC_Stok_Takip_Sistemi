@@ -25,5 +25,17 @@ namespace MVC_Stok_Takip_Sistemi.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult UpdateInformation(Category p)
+        {
+            var model = db.Categories.Find(p.ID);
+            if(model== null) return HttpNotFound(); //ID değeri uyuşmuyorsa yönlendirsin
+            return View(model);
+        }
+        public ActionResult Update(Category p)
+        {
+            db.Entry(p).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -17,14 +17,26 @@ namespace MVC_Stok_Takip_Sistemi.Controllers
         [HttpGet]
         public ActionResult Add()
         {
-            return View();
+            return View("Save");
         }
         [HttpPost]
-        public ActionResult Add(Unit p)
+        public ActionResult Save(Unit p)
         {
-            db.Units.Add(p);
+            if (p.ID == 0)
+            {
+                db.Units.Add(p);
+            }
+            else
+            {
+                db.Entry(p).State = System.Data.Entity.EntityState.Modified;
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public ActionResult UpdateInformation(Unit p) {
+            var model= db.Units.Find(p.ID);
+            if (model == null) return HttpNotFound();
+            return View("Save",model);
         }
     }
 }
