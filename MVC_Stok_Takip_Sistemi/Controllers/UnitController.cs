@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MVC_Stok_Takip_Sistemi.Models;
 using MVC_Stok_Takip_Sistemi.Models.Entity;
 
 namespace MVC_Stok_Takip_Sistemi.Controllers
 {
     public class UnitController : Controller
     {
-        MVC_Stok_TakibiEntities1 db = new MVC_Stok_TakibiEntities1();
+        public MVC_Stok_TakibiEntities1 db = new MVC_Stok_TakibiEntities1();
+        public LinkedList <Unit> UnitLinkedList = new LinkedList <Unit>();
         public ActionResult Index()
         {
-            return View(db.Units.ToList());
+            var UnitFromdb = db.Units.ToList();
+            foreach (var unit in UnitFromdb) { 
+            UnitLinkedList.AddLast(unit);
+            }
+
+            return View(UnitLinkedList.ToList());
         }
         [HttpGet]
         public ActionResult Add()
@@ -32,6 +39,18 @@ namespace MVC_Stok_Takip_Sistemi.Controllers
             }
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public void UpdateUnit(Unit updatedUnit)
+        {
+            var node = UnitLinkedList.First; 
+            {
+                if (node.Value.ID == updatedUnit.ID) 
+                {
+                    node.Value = updatedUnit;
+                    //break;
+                }
+                node = node.Next; 
+            }
         }
         public ActionResult UpdateInformation(Unit p) {
             var model= db.Units.Find(p.ID);

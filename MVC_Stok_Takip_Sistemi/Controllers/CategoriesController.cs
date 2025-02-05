@@ -9,11 +9,19 @@ namespace MVC_Stok_Takip_Sistemi.Controllers
 {
     public class CategoriesController : Controller
     {
-        MVC_Stok_TakibiEntities1 db = new MVC_Stok_TakibiEntities1 ();
-             
+        public MVC_Stok_TakibiEntities1 db = new MVC_Stok_TakibiEntities1 ();
+        //public  CategoryLinkedList CategoryList = new CategoryLinkedList ();
+        public LinkedList<Category> CategoryLinkedList = new LinkedList<Category>();
+
+
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            var CategoriesFromDb = db.Categories.ToList ();
+            foreach (var category in CategoriesFromDb)
+            {
+                CategoryLinkedList.AddLast(category);
+            }
+            return View(CategoryLinkedList.ToList());
         }
         public ActionResult Add()
         {
@@ -31,11 +39,26 @@ namespace MVC_Stok_Takip_Sistemi.Controllers
             if(model== null) return HttpNotFound(); //ID değeri uyuşmuyorsa yönlendirsin
             return View(model);
         }
-        public ActionResult Update(Category p)
+        //public ActionResult Update(Category p)
+        //{
+        //    db.Entry(p).State = System.Data.Entity.EntityState.Modified;
+        //    db.SaveChanges();
+        //    CategoryList.Update(p);
+        //    return RedirectToAction("Index");
+        //}
+        public void UpdateCategory(Category updatedCategory)
         {
-            db.Entry(p).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            var node = CategoryLinkedList.First; // İlk düğümden başla
+            while (node != null)
+            {
+                if (node.Value.ID == updatedCategory.ID) // ID eşleşirse güncelle
+                {
+                    node.Value = updatedCategory;
+                    //break;
+                }
+                node = node.Next; // Sonraki düğüme geç
+            }
         }
+
     }
 }

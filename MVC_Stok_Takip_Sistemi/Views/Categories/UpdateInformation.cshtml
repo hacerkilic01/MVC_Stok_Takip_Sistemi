@@ -7,11 +7,12 @@
 <h2>UpdateInformation</h2>
 
 <div class="container">
-    <form action="/Categories/Update">
+    <form action="/Categories/Update/">
         <div class="form-group">
             <b>ID</b>
             @Html.TextBoxFor(x => x.ID, new { @class = "form-control" })
         </div>
+        @*@Html.HiddenFor(x => x.ID)*@
         <div>
             <b>Category</b>
             @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
