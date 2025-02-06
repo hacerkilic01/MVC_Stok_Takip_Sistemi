@@ -46,6 +46,13 @@ namespace MVC_Stok_Takip_Sistemi.Controllers
         //    CategoryList.Update(p);
         //    return RedirectToAction("Index");
         //}
+
+        public ActionResult Update(Category p)
+        {
+            db.Entry(p).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
         public void UpdateCategory(Category updatedCategory)
         {
             var node = CategoryLinkedList.First; // İlk düğümden başla
