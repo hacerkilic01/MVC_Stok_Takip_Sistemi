@@ -66,6 +66,17 @@ namespace MVC_Stok_Takip_Sistemi.Controllers
                 node = node.Next; // Sonraki düğüme geç
             }
         }
+        public ActionResult DeleteCategory(Category p)
+        {
+            var model = db.Categories.Find(p.ID);
+            if (model==null) return HttpNotFound();
+            return View(model);
+        }
+        public ActionResult Delete(Category p) { 
+            db.Entry(p).State = System.Data.Entity.EntityState.Deleted;
+            db.SaveChanges();
+        return RedirectToAction("Index");
+        }
 
     }
 }

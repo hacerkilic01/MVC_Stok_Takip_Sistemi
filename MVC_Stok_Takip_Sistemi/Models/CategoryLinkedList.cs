@@ -51,28 +51,28 @@ namespace MVC_Stok_Takip_Sistemi.Models
                 current = current.Next;
             }
         }
+        public void Remove(int id)
+        {
+            if (head == null) return;
 
-        //public void Remove(int id)
-        //{
-        //    if (head == null) return;
+            if (head.Data.ID == id)
+            {
+                head = head.Next;
+                if (head == null) tail = null; // Liste tamamen boşaldıysa tail'i de sıfırla
+                return;
+            }
 
-        //    if (head.Data.ID == id)
-        //    {
-        //        head = head.Next;
-        //        if (head == null) tail = null; // Liste tamamen boşaldıysa tail'i de sıfırla
-        //        return;
-        //    }
-
-        //    CategoryNode current = head;
-        //    while (current.Next != null)
-        //    {
-        //        if (current.Next.Data.ID == id)
-        //        {
-        //            current.Next = current.Next.Next;
-        //            if (current.Next == null) tail = current; // Son eleman silindiyse tail'i güncelle
-        //            break;
-        //        }
-        //        current = current.Next;
-        //    }
+            CategoryNode current = head;
+            while (current.Next != null)
+            {
+                if (current.Next.Data.ID == id)
+                {
+                    current.Next = current.Next.Next;
+                    if (current.Next == null) tail = current; // Son eleman silindiyse tail'i güncelle
+                    break;
+                }
+                current = current.Next;
+            }
         }
+    }
     }

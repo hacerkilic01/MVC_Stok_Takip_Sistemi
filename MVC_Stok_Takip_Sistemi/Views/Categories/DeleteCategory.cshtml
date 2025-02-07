@@ -1,0 +1,31 @@
+﻿@model MVC_Stok_Takip_Sistemi.Models.Entity.Category
+@{
+    ViewBag.Title = "DeleteCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Category Delete Page</h2>
+<div class="container">
+    @using (Html.BeginForm("Delete", "Categories"))
+    {
+        <div class="form-group">
+            @Html.HiddenFor(x => x.ID)
+            <b> @Html.Label("Category ")</b>
+            @Html.DisplayFor(x => x.CategoryName, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <b> @Html.LabelFor(x => x.Description)</b>
+            @Html.DisplayFor(x => x.Description, new { @class = "form-control" })
+        </div>
+        <div>
+            <button class="btn btn-danger">
+                Delete Category
+            </button>
+            <a href="/Categories/Index/">
+                Home Page
+            </a>
+        </div>
+    }
+</div>
+

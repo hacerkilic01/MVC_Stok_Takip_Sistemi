@@ -1,0 +1,30 @@
+﻿@model MVC_Stok_Takip_Sistemi.Models.Entity.Unit
+@{
+    ViewBag.Title = "DeleteUnit";
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete Unit</h2>
+<div class="container">
+    @using (Html.BeginForm("Delete", "Unit"))
+    {
+        <div class="form-group">
+            @Html.HiddenFor(x => x.ID)
+            <b> @Html.Label("Unit ")</b>
+            @Html.DisplayFor(x => x.Unit1 , new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <b>@Html.LabelFor(x => x.Description)</b>   
+            @Html.DisplayFor(x => x.Description, new { @class = "form-control" })
+        </div>
+        <div>
+            <button class="btn btn-danger">
+                Delete Unit
+            </button>
+            <a href="/Unit/Index/">
+                Home Page
+            </a>
+        </div>
+    }
+</div>

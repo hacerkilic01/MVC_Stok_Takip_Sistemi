@@ -57,5 +57,17 @@ namespace MVC_Stok_Takip_Sistemi.Controllers
             if (model == null) return HttpNotFound();
             return View("Save",model);
         }
+        public ActionResult DeleteUnit(Unit p)
+        {
+            var model = db.Units.Find(p.ID);
+            if (model == null) return HttpNotFound();
+            return View(model);
+        }
+        public ActionResult Delete(Unit p)
+        {
+            db.Entry(p).State = System.Data.Entity.EntityState.Deleted;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

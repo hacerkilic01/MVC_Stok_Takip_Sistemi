@@ -228,6 +228,8 @@
     <Content Include="Views\Categories\Add.cshtml" />
     <Content Include="Views\Unit\Save.cshtml" />
     <Content Include="Views\Categories\UpdateInformation.cshtml" />
+    <Content Include="Views\Categories\DeleteCategory.cshtml" />
+    <Content Include="Views\Unit\DeleteUnit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
