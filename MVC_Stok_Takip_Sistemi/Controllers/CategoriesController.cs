@@ -29,6 +29,7 @@ namespace MVC_Stok_Takip_Sistemi.Controllers
         }
         public ActionResult Add2(Category p)
         {
+            if (!ModelState.IsValid) return View("Add");
             db.Categories.Add(p);
             db.SaveChanges();
             return RedirectToAction("Index");
