@@ -1,0 +1,35 @@
+﻿@model MVC_Stok_Takip_Sistemi.Models.Entity.Brand
+@{
+    ViewBag.Title = "DeleteBrand";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete Brand</h2>
+
+<div class="container">
+    @using (Html.BeginForm("Delete", "Brands"))
+    {
+    @Html.HiddenFor(x => x.ID)
+    <div class="form-group">
+        <b>@Html.LabelFor(x => x.Category.CategoryName):</b>
+        @Html.DisplayFor(x => x.Category.CategoryName)
+    </div>
+    <div class="form-group">
+        <b>@Html.LabelFor(x => x.Brand1):</b>
+        @Html.DisplayFor(x => x.Brand1)
+    </div>
+    <div class="form-group">
+        <b>@Html.LabelFor(x => x.Description):</b>
+        @Html.DisplayFor(x => x.Description)
+    </div>
+
+    <div>
+        <button class="btn btn-danger">
+            Delete
+        </button>
+        <a href="/Brands/Index">
+            Home Page
+        </a>
+    </div>
+    }
+</div>

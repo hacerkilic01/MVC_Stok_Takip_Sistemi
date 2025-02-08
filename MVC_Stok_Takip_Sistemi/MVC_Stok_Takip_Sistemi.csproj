@@ -233,6 +233,7 @@
     <Content Include="Views\Unit\DeleteUnit.cshtml" />
     <Content Include="Views\Brands\Index.cshtml" />
     <Content Include="Views\Brands\Add.cshtml" />
+    <Content Include="Views\Brands\DeleteBrand.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

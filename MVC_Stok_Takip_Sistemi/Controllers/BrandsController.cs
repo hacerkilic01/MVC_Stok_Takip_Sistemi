@@ -43,5 +43,10 @@ namespace MVC_Stok_Takip_Sistemi.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult DeleteBrand(Brand p)
+        {
+            var getir = db.Brands.Find(p.ID);
+            return View(getir);
+        }
     }
 }
