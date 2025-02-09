@@ -175,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\favicon.ico" />
+    <Content Include="css\styledanger.css" />
     <Content Include="css\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -234,6 +235,7 @@
     <Content Include="Views\Brands\Index.cshtml" />
     <Content Include="Views\Brands\Add.cshtml" />
     <Content Include="Views\Brands\DeleteBrand.cshtml" />
+    <Content Include="Views\Brands\UpdateInformation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
