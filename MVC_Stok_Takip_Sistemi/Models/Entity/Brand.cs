@@ -11,9 +11,7 @@ namespace MVC_Stok_Takip_Sistemi.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Web.ModelBinding;
-
+    
     public partial class Brand
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,13 +21,8 @@ namespace MVC_Stok_Takip_Sistemi.Models.Entity
         }
     
         public int ID { get; set; }
-        [Required(ErrorMessage = "This field cannot be empty")]
         public int CategoryID { get; set; }
-        [Required(ErrorMessage = "This field cannot be empty")]
-
         public string Brand1 { get; set; }
-        [Required(ErrorMessage = "This field cannot be empty")]
-
         public string Description { get; set; }
     
         public virtual Category Category { get; set; }

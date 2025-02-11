@@ -1,0 +1,51 @@
+﻿@model MVC_Stok_Takip_Sistemi.Models.Entity.Product
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Product</h2>
+<div class="container">
+    @using (Html.BeginForm("Add", "Products", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.LabelFor(x => x.Category.CategoryName)
+            @Html.DropDownListFor(x => x.CategoryID, Model.CategoryList, "Choose", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Brand.Brand1)
+            @Html.DropDownListFor(x => x.BrandID, Model.BrandList, "Choose", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Unit.Unit1)
+            @Html.DropDownListFor(x => x.UnitID, Model.UnitList, "Choose", new { @class = "form-control" })
+        </div>
+
+    }
+</div>
+@section scripts
+    {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#CategoryID").change(function () {
+                var ID = $("#CategoryID").val();
+                var brandlist = $("#BrandID");
+                brandlist.empty();
+                $.ajax({
+                    url: '/Products/GetBrand',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { 'id2 ': ID },
+                    success: function (data) {
+                        $.each(data, function (index, option) {
+                            brandlist.append('<option value=' + option.Value + '>' + option.Text + '<option>')
+
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    
+    }
+

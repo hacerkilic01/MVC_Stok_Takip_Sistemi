@@ -16,6 +16,7 @@
         <AssociationConnector Association="MVC_Stok_TakibiModel.FK_Product_Categories" ManuallyRouted="false" />
         <AssociationConnector Association="MVC_Stok_TakibiModel.FK_Sales_Product" ManuallyRouted="false" />
         <AssociationConnector Association="MVC_Stok_TakibiModel.FK_Sales_Units" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_Stok_TakibiModel.FK_Product_Units" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

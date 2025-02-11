@@ -130,10 +130,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BrandsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BrandLinkedList.cs" />
+    <Compile Include="Models\BrandNode.cs" />
     <Compile Include="Models\CategoryLinkedList.cs" />
     <Compile Include="Models\CategoryNode.cs" />
     <Compile Include="Models\Entity\Brand.cs">
@@ -236,6 +239,8 @@
     <Content Include="Views\Brands\Add.cshtml" />
     <Content Include="Views\Brands\DeleteBrand.cshtml" />
     <Content Include="Views\Brands\UpdateInformation.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Products\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

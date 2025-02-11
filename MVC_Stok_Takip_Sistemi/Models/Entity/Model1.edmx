@@ -45,6 +45,7 @@
           <Property Name="BarcodeNo" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="PurchasePrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="SalePrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="28" Scale="2" />
           <Property Name="UnitID" Type="int" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
         </EntityType>
@@ -106,6 +107,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Product_Units">
+          <End Role="Units" Type="Self.Units" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Units">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="UnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Sales_Product">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
@@ -147,6 +160,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Product_Categories" Association="Self.FK_Product_Categories">
             <End Role="Categories" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Units" Association="Self.FK_Product_Units">
+            <End Role="Units" EntitySet="Units" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
           <AssociationSet Name="FK_Sales_Product" Association="Self.FK_Sales_Product">
@@ -211,6 +228,8 @@
           <NavigationProperty Name="Brand" Relationship="Self.FK_Product_Brands" FromRole="Product" ToRole="Brands" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Product_Categories" FromRole="Product" ToRole="Categories" />
           <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_Product" FromRole="Product" ToRole="Sales" />
+          <NavigationProperty Name="Unit" Relationship="MVC_Stok_TakibiModel.FK_Product_Units" FromRole="Product" ToRole="Unit" />
+          <Property Name="Amount" Type="Decimal" Precision="28" Scale="2" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -236,6 +255,7 @@
           <Property Name="Unit1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_Units" FromRole="Units" ToRole="Sales" />
+          <NavigationProperty Name="Products" Relationship="MVC_Stok_TakibiModel.FK_Product_Units" FromRole="Unit" ToRole="Product" />
         </EntityType>
         <Association Name="FK_Brands_Categories">
           <End Role="Categories" Type="Self.Category" Multiplicity="1" />
@@ -324,7 +344,23 @@
             <End Role="Units" EntitySet="Units" />
             <End Role="Sales" EntitySet="Sales" />
           </AssociationSet>
+          <AssociationSet Name="FK_Product_Units" Association="MVC_Stok_TakibiModel.FK_Product_Units">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Product_Units">
+          <End Type="MVC_Stok_TakibiModel.Unit" Role="Unit" Multiplicity="1" />
+          <End Type="MVC_Stok_TakibiModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="UnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -366,6 +402,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="MVC_Stok_TakibiModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="BrandID" ColumnName="BrandID" />

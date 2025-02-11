@@ -10,11 +10,17 @@ namespace MVC_Stok_Takip_Sistemi.Controllers
     public class BrandsController : Controller
     {
         // GET: Brands
-        MVC_Stok_TakibiEntities1 db = new MVC_Stok_TakibiEntities1();
+        public  MVC_Stok_TakibiEntities1 db = new MVC_Stok_TakibiEntities1();
+        public LinkedList<Brand> BrandLinkedList = new LinkedList<Brand>();
         public ActionResult Index()
         {
-            var model = db.Brands.ToList();
-            return View(model);
+            var BrandFromdb = db.Brands.ToList();
+            foreach (var brand in BrandFromdb) 
+            { 
+                BrandLinkedList.AddLast(brand); 
+            }
+         
+            return View(BrandLinkedList.ToList());
         }
         [HttpGet]
         public ActionResult Add()
@@ -50,13 +56,15 @@ namespace MVC_Stok_Takip_Sistemi.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+       
+       
         public ActionResult UpdateInformation(int id)
         {
             SelectUpdateInformation();
             var find = db.Brands.Find(id);
             return View(find);
         }
+        [HttpPost]
         public ActionResult Update(Brand p)
         {
             if (!ModelState.IsValid)
@@ -67,6 +75,18 @@ namespace MVC_Stok_Takip_Sistemi.Controllers
             db.Entry(p).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public void UpdateBrand(Brand updatedBrand)
+        {
+            var node = BrandLinkedList.First;
+            while (node != null)
+            {
+                if (node.Value.ID == updatedBrand.ID)
+                {
+                    node.Value = updatedBrand;
+                }
+                node = node.Next;
+            }
         }
         public ActionResult DeleteBrand(Brand p)
         {

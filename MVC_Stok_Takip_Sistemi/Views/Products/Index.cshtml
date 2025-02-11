@@ -1,0 +1,46 @@
+﻿@model List<MVC_Stok_Takip_Sistemi.Models.Entity.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <thead style="background-color:aliceblue">
+        <tr>
+            <th>ID</th>
+            <th>Category</th>
+            <th>Brand</th>
+            <th>Product Name</th>
+            <th>Barcod Number</th>
+            <th>Purchase Price</th>
+            <th>Amount</th>
+            <th>Sale Price</th>
+            <th>Unit </th>
+            <th>Date</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@Html.DisplayFor(x => item.ID)</th>
+                <td>@Html.DisplayFor(x => item.Category.ID)</td>
+                <td>@Html.DisplayFor(x => item.Brand.Brand1) </td>
+                <td>@Html.DisplayFor(x => item.ProductName)</td>
+                <td>@Html.DisplayFor(x => item.PurchasePrice)</td>
+                <td>@Html.DisplayFor(x => item.SalePrice)</td>
+                <td>@Html.DisplayFor(x => item.Amount)</td>
+                <td>@Html.DisplayFor(x => item.Unit.Unit1)</td>
+                <td>@Html.DisplayFor(x => item.Date)</td>
+                <td>@Html.ActionLink("Delete", "DeleteProducts", new { id = item.ID }, new { @class = "btn btn-danger" })</td>
+                <td>@Html.ActionLink("Update", "UpdateInformation", new { id = item.ID }, new { @class = "btn btn-primary" })</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Products/Add/">
+    Add Product
+</a>

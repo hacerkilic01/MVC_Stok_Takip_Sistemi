@@ -18,6 +18,7 @@ namespace MVC_Stok_Takip_Sistemi.Models.Entity
         public Unit()
         {
             this.Sales = new HashSet<Sale>();
+            this.Products = new HashSet<Product>();
         }
     
         public int ID { get; set; }
@@ -26,5 +27,7 @@ namespace MVC_Stok_Takip_Sistemi.Models.Entity
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sale> Sales { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Products { get; set; }
     }
 }
