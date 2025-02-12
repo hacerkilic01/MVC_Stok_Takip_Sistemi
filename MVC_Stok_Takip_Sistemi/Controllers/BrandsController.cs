@@ -56,6 +56,7 @@ namespace MVC_Stok_Takip_Sistemi.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
        
        
         public ActionResult UpdateInformation(int id)

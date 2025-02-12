@@ -23,7 +23,6 @@ namespace MVC_Stok_Takip_Sistemi.Controllers
             return View(model);
 
         }
-
         private void Reload(Product model)
         {
             List<Category> categorylist = db.Categories.OrderBy(x => x.CategoryName).ToList();
@@ -59,6 +58,19 @@ namespace MVC_Stok_Takip_Sistemi.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult AddAmount(int id)
+        {
+            var model = db.Products.Find(id);
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddAmount(Product p)
+        {
+            var model = db.Products.Find(p.ID);
+            model.Amount = model.Amount + p.Amount;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
         [HttpPost]
         public JsonResult GetBrand(int id2)
         {
@@ -72,6 +84,48 @@ namespace MVC_Stok_Takip_Sistemi.Controllers
                                }).ToList();
             model.BrandList.Insert(0, new SelectListItem { Text = "Choose", Value = "" });
             return Json(model.BrandList, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public ActionResult UpdateInformation(int id)
+        {
+            var model = db.Products.Find(id);
+            Reload(model);
+            List<Brand> brandlist = db.Brands.Where(x => x.CategoryID == model.CategoryID).OrderBy(x => x.Brand1).ToList();
+            model.BrandList= (from x in brandlist
+                                  select new SelectListItem
+                                  {
+                                      Text = x.Brand1,
+                                      Value = x.ID.ToString()
+                                  }).ToList();
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Update(Product p)
+        {
+            if (!ModelState.IsValid)
+            {
+                var model = db.Products.Find(p.ID);
+                Reload(model);
+                List<Brand> brandlist = db.Brands.Where(x => x.CategoryID== model.CategoryID).OrderBy(x => x.Brand1).ToList();
+                model.BrandList = (from x in brandlist
+                                      select new SelectListItem
+                                      {
+                                          Text = x.Brand1,
+                                          Value = x.ID.ToString()
+                                      }).ToList();
+                return View(model);
+
+            }
+            db.Entry(p).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult Delete(int id)
+        {
+            var model = db.Products.FirstOrDefault(x => x.ID == id);
+            db.Entry(model).State = System.Data.Entity.EntityState.Deleted;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

@@ -4,9 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Product List</h2>
 
-<table class="table">
+<table class="table" id="product">
     <thead style="background-color:aliceblue">
         <tr>
             <th>ID</th>
@@ -19,24 +19,28 @@
             <th>Sale Price</th>
             <th>Unit </th>
             <th>Date</th>
-           
+
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <th>@Html.DisplayFor(x => item.ID)</th>
                 <td>@Html.DisplayFor(x => item.Category.ID)</td>
                 <td>@Html.DisplayFor(x => item.Brand.Brand1) </td>
                 <td>@Html.DisplayFor(x => item.ProductName)</td>
+                <td>@Html.DisplayFor(x => item.BarcodeNo)</td>
                 <td>@Html.DisplayFor(x => item.PurchasePrice)</td>
                 <td>@Html.DisplayFor(x => item.SalePrice)</td>
                 <td>@Html.DisplayFor(x => item.Amount)</td>
                 <td>@Html.DisplayFor(x => item.Unit.Unit1)</td>
-                <td>@Html.DisplayFor(x => item.Date)</td>
-                <td>@Html.ActionLink("Delete", "DeleteProducts", new { id = item.ID }, new { @class = "btn btn-danger" })</td>
+                <td>@item.Date.ToString("dd/MM/yyyy")</td>
+                @* <td>@Html.ActionLink("Delete", "DeleteProducts", new { id = item.ID }, new { @class = "btn btn-danger" })</td>*@
+                <td><input type="submit" name="btn" value="Delete" class="btn btn-danger btnDelete" data-id="@item.ID"</td>
+
                 <td>@Html.ActionLink("Update", "UpdateInformation", new { id = item.ID }, new { @class = "btn btn-primary" })</td>
+                <td>@Html.ActionLink("Add Amount", "AddAmount", new { id = item.ID }, new { @class = "btn btn-primary" })</td>
+
             </tr>
         }
     </tbody>
@@ -44,3 +48,29 @@
 <a href="/Products/Add/">
     Add Product
 </a>
+
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        //class =>. , id=>#
+        $("#product").on("click", ".btnDelete", function () {
+            var btn = $(this);
+            //id yakalama;
+            //var id = btn.data("id");
+            //alert(id);
+            bootbox.confirm(btn.data("id") + "nolu ID kaydı silinsin mi?", function (result) {
+                if (result) {
+                    var id = btn.data("id");
+                    $.ajax({
+                        type: "GET",
+                        url: "/Products/Delete/",
+                        data: { id: id },
+                        success: function () {
+                            btn.parent().parent().remove();
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>
