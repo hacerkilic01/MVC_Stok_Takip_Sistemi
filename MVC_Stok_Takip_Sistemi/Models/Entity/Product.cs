@@ -27,15 +27,24 @@ namespace MVC_Stok_Takip_Sistemi.Models.Entity
         }
 
         public int ID { get; set; }
+        [Required(ErrorMessage = "Cannot be left blank.")]
+
         public int CategoryID { get; set; }
+        [Required(ErrorMessage = "Cannot be left blank.")]
         public int BrandID { get; set; }
+        [Required(ErrorMessage = "Cannot be left blank.")]
         public string ProductName { get; set; }
+        [Required(ErrorMessage = "Cannot be left blank.")]
         public string BarcodeNo { get; set; }
-        public decimal PurchasePrice { get; set; }
-        public decimal SalePrice { get; set; }
+        [Required(ErrorMessage = "Cannot be left blank.")]
+        public decimal? PurchasePrice { get; set; }
+        [Required(ErrorMessage = "Cannot be left blank.")]
+        public decimal? SalePrice { get; set; }
+        [Required(ErrorMessage = "Cannot be left blank.")]
         public int UnitID { get; set; }
         [DataType(DataType.Date)]
         public System.DateTime Date { get; set; }
+        [Required(ErrorMessage = "Cannot be left blank.")]
         public Nullable<decimal> Amount { get; set; }
 
         public virtual Brand Brand { get; set; }

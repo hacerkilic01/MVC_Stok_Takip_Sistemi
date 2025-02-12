@@ -49,8 +49,17 @@ namespace MVC_Stok_Takip_Sistemi.Controllers
         [HttpPost]
         public ActionResult Add(Product p)
         {
+            if (!ModelState.IsValid)
+            {
+                var model = new Product();
+                Reload(model);
+                return View(model);
+            }
+            db.Entry(p).State = System.Data.Entity.EntityState.Added;
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpPost]
         public JsonResult GetBrand(int id2)
         {
             var model = new Product();
